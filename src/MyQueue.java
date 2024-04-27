@@ -8,7 +8,6 @@ public class MyQueue<T> {
     public void enqueue(T item) {
         list.addLast(item);
     }
-
     public T dequeue() {
         if (isEmpty()) {
             throw new IllegalStateException("Queue is empty");
