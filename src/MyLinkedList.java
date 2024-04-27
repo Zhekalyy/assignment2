@@ -140,9 +140,6 @@ public class MyLinkedList<T> implements MyList<T> {
 
     @Override
     public void sort() {
-        // Not implemented for linked list
-        // You can implement sorting algorithms like merge sort or quick sort
-        // But it's more complex and not necessary for the purpose of this example
         throw new UnsupportedOperationException("Sorting is not supported for linked list");
     }
 
