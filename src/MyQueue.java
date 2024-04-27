@@ -13,8 +13,8 @@ public class MyQueue<T> {
         if (isEmpty()) {
             throw new IllegalStateException("Queue is empty");
         }
-        list.removeFirst(); // Удаляем элемент из списка
-        return list.getFirst(); // Возвращаем первый элемент
+        list.removeFirst(); 
+        return list.getFirst();
     }
 
 
