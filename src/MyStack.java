@@ -4,7 +4,6 @@ public class MyStack<T> {
     public MyStack(MyList<T> list) {
         this.list = list;
     }
-
     public void push(T item) {
         list.add(item);
     }
@@ -13,9 +12,9 @@ public class MyStack<T> {
         if (isEmpty()) {
             throw new IllegalStateException("Stack is empty");
         }
-        T last = list.getLast(); // Получаем последний элемент
-        list.removeLast(); // Удаляем последний элемент
-        return last; // Возвращаем последний элемент
+        T last = list.getLast(); 
+        list.removeLast(); 
+        return last;
     }
 
 
