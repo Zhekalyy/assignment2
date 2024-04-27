@@ -1,6 +1,5 @@
 public class MyStack<T> {
     private MyList<T> list;
-
     public MyStack(MyList<T> list) {
         this.list = list;
     }
