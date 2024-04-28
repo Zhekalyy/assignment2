@@ -1,3 +1,4 @@
+import java.util.Iterator;
 public class MyLinkedList<T> implements MyList<T> {
     private class MyNode {
         T data;
@@ -203,7 +204,7 @@ public class MyLinkedList<T> implements MyList<T> {
     }
 
     @Override
-    public java.util.Iterator<T> iterator() {
+    public Iterator<T> iterator() {
         return new java.util.Iterator<T>() {
             private MyNode current = head;
 
