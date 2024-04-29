@@ -1,5 +1,11 @@
+/**
+ * MyLinkedList<T> is an implementation of the MyList interface using a doubly linked list to store elements.
+ *
+ * @param <T> the type of elements stored in the linked list
+ */
 import java.util.Iterator;
 public class MyLinkedList<T> implements MyList<T> {
+
     private class MyNode {
         T data;
         MyNode next;
@@ -14,6 +20,9 @@ public class MyLinkedList<T> implements MyList<T> {
     private MyNode tail;
     private int size;
 
+    /**
+     * Constructs an empty linked list.
+     */
     public MyLinkedList() {
         head = null;
         tail = null;
@@ -33,14 +42,17 @@ public class MyLinkedList<T> implements MyList<T> {
 
     @Override
     public void add(int index, T item) {
+        // Check if index is out of bounds
         if (index < 0 || index > size) {
             throw new IndexOutOfBoundsException("Index out of bounds");
         }
+        // Check if index is at the beginning or end of the list
         if (index == 0) {
             addFirst(item);
         } else if (index == size) {
             addLast(item);
         } else {
+            // Insert at specified index
             MyNode current = getNodeAtIndex(index);
             MyNode newNode = new MyNode(item);
             newNode.next = current;
@@ -54,10 +66,12 @@ public class MyLinkedList<T> implements MyList<T> {
     @Override
     public void addFirst(T item) {
         MyNode newNode = new MyNode(item);
+        // Check if list is empty
         if (isEmpty()) {
             head = newNode;
             tail = newNode;
         } else {
+            // Insert at the beginning
             newNode.next = head;
             head.prev = newNode;
             head = newNode;
@@ -68,10 +82,12 @@ public class MyLinkedList<T> implements MyList<T> {
     @Override
     public void addLast(T item) {
         MyNode newNode = new MyNode(item);
+        // Check if list is empty
         if (isEmpty()) {
             head = newNode;
             tail = newNode;
         } else {
+            // Insert at the end
             tail.next = newNode;
             newNode.prev = tail;
             tail = newNode;
@@ -103,11 +119,13 @@ public class MyLinkedList<T> implements MyList<T> {
     @Override
     public void remove(int index) {
         MyNode nodeToRemove = getNodeAtIndex(index);
+        // Check if node to remove is at the beginning or end of the list
         if (nodeToRemove == head) {
             removeFirst();
         } else if (nodeToRemove == tail) {
             removeLast();
         } else {
+            // Remove from the middle
             nodeToRemove.prev.next = nodeToRemove.next;
             nodeToRemove.next.prev = nodeToRemove.prev;
             size--;
@@ -119,6 +137,7 @@ public class MyLinkedList<T> implements MyList<T> {
         if (isEmpty()) {
             throw new IllegalStateException("List is empty");
         }
+        // Remove the first node
         head = head.next;
         size--;
     }
@@ -128,10 +147,12 @@ public class MyLinkedList<T> implements MyList<T> {
         if (isEmpty()) {
             throw new IllegalStateException("List is empty");
         }
+        // Check if list contains only one node
         if (size == 1) {
             head = null;
             tail = null;
         } else {
+            // Remove the last node
             tail = tail.prev;
             tail.next = null;
         }
@@ -140,9 +161,6 @@ public class MyLinkedList<T> implements MyList<T> {
 
     @Override
     public void sort() {
-        // Not implemented for linked list
-        // You can implement sorting algorithms like merge sort or quick sort
-        // But it's more complex and not necessary for the purpose of this example
         throw new UnsupportedOperationException("Sorting is not supported for linked list");
     }
 
@@ -150,6 +168,7 @@ public class MyLinkedList<T> implements MyList<T> {
     public int indexOf(Object object) {
         MyNode current = head;
         int index = 0;
+        // Traverse the list to find the index of the object
         while (current != null) {
             if (current.data.equals(object)) {
                 return index;
@@ -164,6 +183,7 @@ public class MyLinkedList<T> implements MyList<T> {
     public int lastIndexOf(Object object) {
         MyNode current = tail;
         int index = size - 1;
+        // Traverse the list backwards to find the last index of the object
         while (current != null) {
             if (current.data.equals(object)) {
                 return index;
@@ -184,6 +204,7 @@ public class MyLinkedList<T> implements MyList<T> {
         Object[] array = new Object[size];
         MyNode current = head;
         int index = 0;
+        // Copy elements to array
         while (current != null) {
             array[index++] = current.data;
             current = current.next;
@@ -235,6 +256,7 @@ public class MyLinkedList<T> implements MyList<T> {
             throw new IndexOutOfBoundsException("Index out of bounds");
         }
         MyNode current = head;
+        // Traverse the list to find the node at the specified index
         for (int i = 0; i < index; i++) {
             current = current.next;
         }
@@ -244,4 +266,6 @@ public class MyLinkedList<T> implements MyList<T> {
     private boolean isEmpty() {
         return size == 0;
     }
+}
+
 }
