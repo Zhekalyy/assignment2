@@ -3,12 +3,12 @@ import java.util.Arrays;
 import java.util.Objects;
 import java.util.NoSuchElementException;
 public class MyArrayList<T> implements MyList<T> {
-    private static final int DEFAULT_CAPACITY = 10;
+    private static final int capacity = 10;
     private Object[] elements;
     private int size;
 
     public MyArrayList() {
-        elements = new Object[DEFAULT_CAPACITY];
+        elements = new Object[capacity];
         size = 0;
     }
 
@@ -149,7 +149,7 @@ public class MyArrayList<T> implements MyList<T> {
 
     @Override
     public void clear() {
-        elements = new Object[DEFAULT_CAPACITY];
+        elements = new Object[capacity];
         size = 0;
     }
 
